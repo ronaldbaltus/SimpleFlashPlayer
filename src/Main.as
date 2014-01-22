@@ -10,19 +10,20 @@ package
 	import flash.events.Event;
 	import flash.events.NetStatusEvent;
 	import flash.events.StatusEvent;
+	import flash.events.IOErrorEvent;
+	import flash.events.MouseEvent;
 	import flash.net.NetConnection;
 	import flash.net.NetStream;
 	import flash.net.URLRequest;
 	import flash.system.Security;
+	import flash.media.Video;
+	import flash.external.ExternalInterface;
 	
 	/**
 	 * @author Ronald Baltus
 	 */
 	public class Main extends Sprite 
 	{
-		import flash.external.*;
-		import flash.media.Video;
-		import flash.events.*;
 		
         private var stageWidth:int = 0;
         private var stageHeight:int = 0;
