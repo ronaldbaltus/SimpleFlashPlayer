@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>SimpleFlashPlayer</title>
+	<meta name="description" content="" />
+	
+	<script src="js/swfobject.js"></script>
+	<script>
+		var flashvars = {
+			url:   'http://172.16.7.98/snapshots/P/E/performer/preview.flv',
+			thumb: 'http://172.16.7.98/snapshots/P/E/performer/snapshot.jpg'
+		};
+		var params = {
+			menu: "false",
+			scale: "noScale",
+			allowFullscreen: "true",
+			allowScriptAccess: "always",
+			bgcolor: "",
+			wmode: "direct" // can cause issues with FP settings & webcam
+		};
+		var attributes = {
+			id:"SimpleFlashPlayer",
+			name:"SimpleFlashPlayer"
+		};
+		swfobject.embedSWF(
+			"SimpleFlashPlayer.swf", 
+			"altContent", "400", "400", "10.0.0", 
+			"expressInstall.swf", 
+			flashvars, params, attributes, function() {
+			
+				console.log('loaded');
+				var f = document.getElementById(attributes.id);
+				
+				f.onready = function() {
+					console.log('ready');
+				}
+				
+				f.onplay = function() {
+					console.log('playink!', arguments);
+				}
+				
+				f.onstop = function() {
+					console.log('stop');
+					f.play();
+				}
+			});
+	</script>
+	<style>
+		html, body { height:100%; overflow:hidden; }
+		body { margin:0; }
+		#SimpleFlashPlayer {
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<div id="altContent">
+		<h1>SimpleFlashPlayer</h1>
+		<p><a href="http://www.adobe.com/go/getflashplayer">Get Adobe Flash player</a></p>
+	</div>
+</body>
+</html>
